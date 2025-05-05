@@ -9,7 +9,7 @@ function FindProxyForURL(url, host) {
         return "PROXY 138.124.120.18:63880";
     }
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
-        shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my"
+        shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return "PROXY 138.124.120.18:63880";
     }
