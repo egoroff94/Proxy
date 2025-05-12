@@ -10,6 +10,9 @@ function FindProxyForURL(url, host) {
     if (host === "sora.chatgpt.com") {
         return proxy;
     }
+    if (shExpMatch(host, "*.sora.chatgpt.com")) {
+        return proxy;
+    }
     if (host === "platform.openai.com") {
         return proxy;
     }
