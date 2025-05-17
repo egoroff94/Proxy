@@ -4,9 +4,15 @@ function FindProxyForURL(url, host) {
     if (host === "gemini.google.com") {
         return proxy;
     }
+
     if (host === "notebooklm.google.com") {
         return proxy;
     }
+
+    if (host === "dashboard.ngrok.com") {
+        return proxy;
+    }
+
     if (host === "sora.chatgpt.com") {
         return proxy;
     }
@@ -18,8 +24,10 @@ function FindProxyForURL(url, host) {
     }
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
+        shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return proxy;
     }
     return "DIRECT";
 }
+
