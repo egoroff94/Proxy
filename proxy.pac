@@ -22,6 +22,10 @@ function FindProxyForURL(url, host) {
     if (host === "platform.openai.com") {
         return proxy;
     }
+
+     if (host === "auth.openai.com") {
+        return proxy;
+    }
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
         shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
