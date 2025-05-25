@@ -29,9 +29,11 @@ function FindProxyForURL(url, host) {
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
         shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
+        shExpMatch(host, "*.anthropic.com") || host === "anthropic.com" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return proxy;
     }
     return "DIRECT";
 }
+
 
