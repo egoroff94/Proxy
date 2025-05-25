@@ -22,7 +22,9 @@ function FindProxyForURL(url, host) {
     if (host === "platform.openai.com") {
         return proxy;
     }
-
+    if (host === "aistudio.google.com") {
+        return proxy;
+    }
      if (host === "auth.openai.com") {
         return proxy;
     }
