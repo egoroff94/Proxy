@@ -30,6 +30,7 @@ function FindProxyForURL(url, host) {
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
         shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
         shExpMatch(host, "*.anthropic.com") || host === "anthropic.com" ||
+        shExpMatch(host, "*.grok.com") || host === "grok.com" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return proxy;
     }
