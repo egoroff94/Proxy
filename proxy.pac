@@ -25,6 +25,9 @@ function FindProxyForURL(url, host) {
     if (host === "aistudio.google.com") {
         return proxy;
     }
+    if (host === "app.n8n.cloud") {
+        return proxy;
+    }
      if (host === "auth.openai.com") {
         return proxy;
     }
