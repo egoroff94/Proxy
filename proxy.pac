@@ -16,26 +16,37 @@ function FindProxyForURL(url, host) {
     if (host === "sora.chatgpt.com") {
         return proxy;
     }
+
     if (shExpMatch(host, "*.sora.chatgpt.com")) {
         return proxy;
     }
+
     if (host === "platform.openai.com") {
         return proxy;
     }
+
     if (host === "aistudio.google.com") {
         return proxy;
     }
+
     if (host === "app.n8n.cloud") {
         return proxy;
     }
-     if (host === "auth.openai.com") {
+    
+    if (host === "app.n8n.cloud") {
         return proxy;
     }
+
+     if (host === "x.ai") {
+        return proxy;
+    }
+
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
         shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
         shExpMatch(host, "*.anthropic.com") || host === "anthropic.com" ||
         shExpMatch(host, "*.grok.com") || host === "grok.com" ||
+        shExpMatch(host, "*.x.ai") || host === "x.ai" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return proxy;
     }
