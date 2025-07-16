@@ -13,6 +13,10 @@ function FindProxyForURL(url, host) {
         return proxy;
     }
 
+    if (host === "2ip.ru") {
+        return proxy;
+    }
+
     if (host === "sora.chatgpt.com") {
         return proxy;
     }
