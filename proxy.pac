@@ -1,5 +1,5 @@
 function FindProxyForURL(url, host) {
-    var proxy = "PROXY 138.124.120.18:63880";
+    var proxy = "PROXY 156.246.142.163:62502";
 
     if (host === "gemini.google.com") {
         return proxy;
