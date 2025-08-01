@@ -2,6 +2,10 @@ function FindProxyForURL(url, host) {
     var proxy = "PROXY 156.246.142.163:62502";
     var proxy2 = "PROXY pool.proxy.market:10006";
 
+    if (host === "enterprisedb.com") {
+        return proxy;
+    }
+
     if (host === "gemini.google.com") {
         return proxy;
     }
