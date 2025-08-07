@@ -56,6 +56,7 @@ function FindProxyForURL(url, host) {
 
     if (shExpMatch(host, "*.chatgpt.com") || host === "chatgpt.com" ||
         shExpMatch(host, "*.ipaddress.my") || host === "ipaddress.my" ||
+        shExpMatch(host, "*.jetbrains.com") || host === "jetbrains.com" ||
         shExpMatch(host, "*.ngrok.com") || host === "ngrok.com" ||
         shExpMatch(host, "*.anthropic.com") || host === "anthropic.com" ||
         shExpMatch(host, "*.enterprisedb.com") || host === "enterprisedb.com" ||
