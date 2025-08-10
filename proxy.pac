@@ -18,6 +18,10 @@ function FindProxyForURL(url, host) {
         return proxy;
     }
 
+    if (host === "protonvpn.com") {
+        return proxy;
+    }
+
     if (host === "dashboard.ngrok.com") {
         return proxy;
     }
