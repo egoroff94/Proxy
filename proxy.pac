@@ -6,6 +6,10 @@ function FindProxyForURL(url, host) {
         return proxy;
     }
 
+    if (host === "umnico.com") {
+        return proxy;
+    }
+    
     if (host === "jetbrains.com") {
         return proxy;
     }
