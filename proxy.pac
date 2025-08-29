@@ -17,7 +17,11 @@ function FindProxyForURL(url, host) {
     if (host === "gemini.google.com") {
         return proxy;
     }
-
+    
+    if (host === "aistudio.google.com") {
+        return proxy;
+    }
+    
     if (host === "notebooklm.google.com") {
         return proxy;
     }
