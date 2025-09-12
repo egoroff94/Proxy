@@ -62,6 +62,10 @@ function FindProxyForURL(url, host) {
         return proxy;
     }
 
+    if (host === "surfshark.com") {
+        return proxy;
+    }
+
      if (host === "x.ai") {
         return proxy;
     }
