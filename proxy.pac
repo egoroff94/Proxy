@@ -66,6 +66,10 @@ function FindProxyForURL(url, host) {
         return proxy;
     }
 
+    if (host === "nordvpn.com") {
+        return proxy;
+    }
+
      if (host === "x.ai") {
         return proxy;
     }
@@ -77,6 +81,7 @@ function FindProxyForURL(url, host) {
         shExpMatch(host, "*.anthropic.com") || host === "anthropic.com" ||
         shExpMatch(host, "*.enterprisedb.com") || host === "enterprisedb.com" ||
         shExpMatch(host, "*.grok.com") || host === "grok.com" ||
+        shExpMatch(host, "*.surfshark.com") || host === "surfshark.com" ||
         shExpMatch(host, "*.x.ai") || host === "x.ai" ||
         shExpMatch(host, "*.openai.com") || host === "openai.com") {
         return proxy;
