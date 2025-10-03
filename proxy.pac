@@ -1,6 +1,5 @@
 function FindProxyForURL(url, host) {
-    var proxy = "PROXY 156.246.142.163:62502";
-    var proxy2 = "PROXY pool.proxy.market:10006";
+    var proxy = "PROXY 154.215.12.102:62820";
 
     if (host === "enterprisedb.com") {
         return proxy;
@@ -35,7 +34,7 @@ function FindProxyForURL(url, host) {
     }
 
     if (host === "2ip.ru") {
-        return proxy2;
+        return proxy;
     }
 
     if (host === "sora.chatgpt.com") {
