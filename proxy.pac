@@ -1,5 +1,5 @@
 function FindProxyForURL(url, host) {
-    var proxy = "PROXY 154.215.12.102:62820";
+    var proxy = "PROXY 156.243.150.117:63312";
 
     if (host === "enterprisedb.com") {
         return proxy;
