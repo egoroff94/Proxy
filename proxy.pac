@@ -2,24 +2,14 @@ function FindProxyForURL(url, host) {
   var PROXY = "PROXY 156.243.150.117:63312";
   if (!host) return "DIRECT";
 
-  // нормализуем
   var h = host.toLowerCase().replace(/\.$/, "");
 
-  // лёгкие исключения: локальные имена/домашние зоны — без DNS
-  if (isPlainHostName(h) ||
-      shExpMatch(h, "*.local") ||
-      shExpMatch(h, "*.lan") ||
-      shExpMatch(h, "*.home") ||
-      shExpMatch(h, "*.intra")) {
-    return "DIRECT";
-  }
-
-  // TLD .google (labs.google, jules.google и т.д.)
+  // Все зоны .google (например, labs.google, jules.google)
   if (shExpMatch(h, "*.google")) return PROXY;
 
-  // Суффиксы доменов, которые нужно вести через прокси
-  var zones = [
-    // инструменты/провайдеры
+  // Домены/зоны, которые нужно проксировать (включая их поддомены)
+  var domains = [
+    // Инструменты/провайдеры
     "enterprisedb.com",
     "umnico.com",
     "jetbrains.com",
@@ -29,7 +19,7 @@ function FindProxyForURL(url, host) {
     "surfshark.com",
     "nordvpn.com",
 
-    // AI/LLM/прочее
+    // AI/LLM и смежные
     "chatgpt.com",
     "openai.com",
     "anthropic.com",
@@ -37,7 +27,7 @@ function FindProxyForURL(url, host) {
     "x.ai",
     "ipaddress.my",
 
-    // Google-экосистема
+    // Экосистема Google
     "google.com",
     "googleapis.com",
     "googleusercontent.com",
@@ -49,9 +39,10 @@ function FindProxyForURL(url, host) {
     "ggpht.com"
   ];
 
-  // суффиксное совпадение (root и поддомены)
-  for (var i = 0; i < zones.length; i++) {
-    if (dnsDomainIs(h, zones[i])) return PROXY;
+  for (var i = 0; i < domains.length; i++) {
+    if (h === domains[i] || shExpMatch(h, "*." + domains[i])) {
+      return PROXY;
+    }
   }
 
   return "DIRECT";
