@@ -2,24 +2,24 @@ function FindProxyForURL(url, host) {
   var PROXY = "PROXY 156.243.150.117:63312";
   if (!host) return "DIRECT";
 
-  // нормализуем хост (на всякий случай)
+  // нормализуем
   var h = host.toLowerCase().replace(/\.$/, "");
 
-  // быстрый обход локальных имён и сетей (ускоряет интранет)
-  if (isPlainHostName(h)) return "DIRECT";
-  var ip = dnsResolve(h);
-  if (ip) {
-    if (isInNet(ip, "10.0.0.0", "255.0.0.0") ||
-        isInNet(ip, "172.16.0.0", "255.240.0.0") ||
-        isInNet(ip, "192.168.0.0", "255.255.0.0") ||
-        isInNet(ip, "127.0.0.0", "255.0.0.0")) {
-      return "DIRECT";
-    }
+  // лёгкие исключения: локальные имена/домашние зоны — без DNS
+  if (isPlainHostName(h) ||
+      shExpMatch(h, "*.local") ||
+      shExpMatch(h, "*.lan") ||
+      shExpMatch(h, "*.home") ||
+      shExpMatch(h, "*.intra")) {
+    return "DIRECT";
   }
 
-  // Доменные зоны/доменные суффиксы, которые нужно проксировать
-  var domains = [
-    // Инструменты/провайдеры
+  // TLD .google (labs.google, jules.google и т.д.)
+  if (shExpMatch(h, "*.google")) return PROXY;
+
+  // Суффиксы доменов, которые нужно вести через прокси
+  var zones = [
+    // инструменты/провайдеры
     "enterprisedb.com",
     "umnico.com",
     "jetbrains.com",
@@ -29,7 +29,7 @@ function FindProxyForURL(url, host) {
     "surfshark.com",
     "nordvpn.com",
 
-    // AI/LLM-сервисы
+    // AI/LLM/прочее
     "chatgpt.com",
     "openai.com",
     "anthropic.com",
@@ -37,16 +37,11 @@ function FindProxyForURL(url, host) {
     "x.ai",
     "ipaddress.my",
 
-    // Google: все сервисы и связанные зоны
-    // .google.com (Gmail, Gemini, Aistudio, NotebookLM, и т.д.)
+    // Google-экосистема
     "google.com",
-    // .google (labs.google, jules.google и прочие)
-    "google",
-    // API/статика/контент
     "googleapis.com",
     "googleusercontent.com",
     "gstatic.com",
-    // короткие домены и дистрибуция
     "g.co",
     "goo.gl",
     "gvt1.com",
@@ -54,9 +49,9 @@ function FindProxyForURL(url, host) {
     "ggpht.com"
   ];
 
-  // Совпадение по домену или его поддоменам
-  for (var i = 0; i < domains.length; i++) {
-    if (dnsDomainIs(h, domains[i])) return PROXY;
+  // суффиксное совпадение (root и поддомены)
+  for (var i = 0; i < zones.length; i++) {
+    if (dnsDomainIs(h, zones[i])) return PROXY;
   }
 
   return "DIRECT";
